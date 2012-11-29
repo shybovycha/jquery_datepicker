@@ -48,6 +48,16 @@ class JqueryDatepicker::InstanceTag < ActionView::Helpers::InstanceTag
   
   def split_options(options)
     tf_options = options.slice!(*available_datepicker_options)
+
+    [:minDate, :maxDate].each do |key|
+      options[key] = case options[key]
+                       when Date, DateTime
+                         options[key].to_s
+                       else
+                         options[key]
+                    end
+    end
+
     return options, tf_options
   end
   
