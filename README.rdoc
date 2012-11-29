@@ -31,9 +31,9 @@ Rails 3.1:
 
     //= require jquery
     //= require jquery-ujs
-    //= require jquery-ui
+    //= require jquery.ui.datepicker
 
-(if you are using datetime picker, add also)
+If you want to use datetime picker as well, add these:
 
     //= require jquery-ui-timepicker-addon.js
 
@@ -41,13 +41,19 @@ You can find it here:
 
 https://github.com/trentrichardson/jQuery-Timepicker-Addon
 
+3. Be sure to recompile your assets to apply the changes
+
+    rake assets:precompile:all RAILS_ENV=production
+
+        or just
+
+    rake assets:precompile:all
 
 == Usage
 
 Add this to your view.
 
-    <%= datepicker_input "user","birthday" %>
-	
+    <%= datepicker_input "user", "birthday" %>
 
 Where "user" is your model name and "birthday" the name of the datefield.
 
@@ -61,15 +67,25 @@ You can also use it with the form helper like:
 Nested attributes are permitted as well:
 
     <% form_for(@user) do |f| %>
+
       <% f.fields_for(@nested) do |f2| %>
         <%= f2.datepicker 'birthday' %>
       <% end %>
+
       <%= f.submit 'Create' %>
     <% end %>
 
 You can pass options as it would be a normal text_field, plus all the datepicker options available (http://jqueryui.com/demos/datepicker/#options)
 
-    <%= datepicker_input(:foo, :att1, :minDate => -20, :maxDate => "+1M +10D", :tabindex => 70) %>
+    <%= datepicker_input(:my_model, :my_attribute, :minDate => -20, :maxDate => "+1M +10D", :tabindex => 70) %>
+
+For example, to use the different date format in the input, use this:
+
+    <%= datepicker_input(:my_model, :my_attribute, :dateFormat => 'dd.mm.yy') # e.g. 29.11.2012 %>
+
+You could also use :minDate and :maxDate options with standard Ruby DateTime object:
+
+    <%= datepicker_input(:my_model, :my_attribute, :minDate => DateTime.now) # e.g. 29.11.2012 %>
 
 == Use DateTime picker
 

@@ -52,7 +52,7 @@ class JqueryDatepicker::InstanceTag < ActionView::Helpers::InstanceTag
     [:minDate, :maxDate].each do |key|
       options[key] = case options[key]
                        when Date, DateTime
-                         options[key].to_s
+                         "new Date(#{options[key].year}, #{options[key].month}, #{options[key].day})"
                        else
                          options[key]
                     end
