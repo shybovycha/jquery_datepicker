@@ -43,13 +43,60 @@ class JqueryDatepicker::InstanceTag < ActionView::Helpers::InstanceTag
   end
   
   def available_datepicker_options
-    [:disabled, :altField, :altFormat, :appendText, :autoSize, :buttonImage, :buttonImageOnly, :buttonText, :calculateWeek, :changeMonth, :changeYear, :closeText, :constrainInput, :currentText, :dateFormat, :dayNames, :dayNamesMin, :dayNamesShort, :defaultDate, :duration, :firstDay, :gotoCurrent, :hideIfNoPrevNext, :isRTL, :maxDate, :minDate, :monthNames, :monthNamesShort, :navigationAsDateFormat, :nextText, :numberOfMonths, :prevText, :selectOtherMonths, :shortYearCutoff, :showAnim, :showButtonPanel, :showCurrentAtPos, :showMonthAfterYear, :showOn, :showOptions, :showOtherMonths, :showWeek, :stepMonths, :weekHeader, :yearRange, :yearSuffix]
+    [
+        :disabled,
+        :altField,
+        :altFormat,
+        :appendText,
+        :autoSize,
+        :buttonImage,
+        :buttonImageOnly,
+        :buttonText,
+        :calculateWeek,
+        :changeMonth,
+        :changeYear,
+        :closeText,
+        :constrainInput,
+        :currentText,
+        :dateFormat,
+        :dayNames,
+        :dayNamesMin,
+        :dayNamesShort,
+        :defaultDate,
+        :duration,
+        :firstDay,
+        :gotoCurrent,
+        :hideIfNoPrevNext,
+        :isRTL,
+        :maxDate,
+        :minDate,
+        :monthNames,
+        :monthNamesShort,
+        :navigationAsDateFormat,
+        :nextText,
+        :numberOfMonths,
+        :prevText,
+        :selectOtherMonths,
+        :shortYearCutoff,
+        :showAnim,
+        :showButtonPanel,
+        :showCurrentAtPos,
+        :showMonthAfterYear,
+        :showOn,
+        :showOptions,
+        :showOtherMonths,
+        :showWeek,
+        :stepMonths,
+        :weekHeader,
+        :yearRange,
+        :yearSuffix
+    ]
   end
   
   def split_options(options)
     tf_options = options.slice!(*available_datepicker_options)
 
-    [:minDate, :maxDate].each do |key|
+    [:minDate, :maxDate, :defaultDate].each do |key|
       options[key] = case options[key]
                        when Date, DateTime
                          "new Date(#{options[key].year}, #{options[key].month}, #{options[key].day})"
