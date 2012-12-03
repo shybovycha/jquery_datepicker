@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = "View helper that allows to select dates from a calendar (using jQuery Ui plugin)"
   s.email = "albert.pastor@gmail.com"
   s.extra_rdoc_files = ["README.rdoc", "lib/app/helpers/datepicker_helper.rb", "lib/app/helpers/form_helper.rb", "lib/jquery_datepicker.rb"]
-  s.files = ["README.markdown", "Rakefile", "init.rb", "jquery_datepicker.gemspec", "lib/app/helpers/datepicker_helper.rb", "lib/app/helpers/form_helper.rb", "lib/jquery_datepicker.rb"]
+  s.files = ["README.rdoc", "README.markdown", "Rakefile", "init.rb", "jquery_datepicker.gemspec", "lib/app/helpers/datepicker_helper.rb", "lib/app/helpers/form_helper.rb", "lib/jquery_datepicker.rb"]
   s.homepage = "http://github.com/albertopq/jquery_datepicker"
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Jquery_datepicker", "--main", "README.rdoc"]
   s.require_paths = ["lib"]
