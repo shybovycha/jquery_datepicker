@@ -9,7 +9,6 @@ module JqueryDatepicker
     def datepicker(object_name, method, options = {}, timepicker = false)
       input_tag =  JqueryDatepicker::InstanceTag.new(object_name, method, self, options.delete(:object))
       dp_options, tf_options =  input_tag.split_options(options)
-      puts "Value:: #{dp_options[:defaultDate] || tf_options[:value]}"
       tf_options[:value] = (dp_options[:defaultDate] || tf_options[:value]) #input_tag.format_date(dp_options[:defaultDate] || tf_options[:value], String.new(dp_options[:dateFormat])) if tf_options[:value] && !tf_options[:value].empty? && dp_options.has_key?(:dateFormat)
       html = input_tag.to_input_field_tag("text", tf_options)
       method = timepicker ? "datetimepicker" : "datepicker"
